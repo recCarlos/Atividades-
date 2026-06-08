@@ -1,44 +1,107 @@
 <!DOCTYPE html>
+<!-- Informa ao navegador que o documento usa HTML5 -->
+
 <html lang="pt-BR">
+<!-- Início da página e definição do idioma como português do Brasil -->
 
 <head>
+    <!-- Área de configurações da página -->
+
     <meta charset="UTF-8">
+    <!-- Permite exibir caracteres especiais como ç, á, ã, é, etc. -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Dev</title>
+    <!-- Faz a página se adaptar a celulares e tablets -->
+
+    <title>Calculadora</title>
+    <!-- Texto exibido na aba do navegador -->
+
     <link rel="stylesheet" href="style.css">
+    <!-- Conecta o arquivo CSS à página -->
 </head>
 
 <body>
+    <!-- Conteúdo visível da página -->
 
-    <div Class="calculadora">
-        <input type="text" id"visor" readonly>
+    <main class="calculadora">
+        <!-- Área principal da calculadora -->
 
-        <div class-"botoes">
-            <button onclick="limpaVisor()" class="btn-limpar">C</button>
-            <button onclick="adicionarValor('/')" class="btn-operadir">/</button>
-            <button onclick="adicionarValor('*')" class="btn-operador">*</button>
-            <button onclick="apagarUltimo()" class="btn-operador">⌫</button>
+        <h1>🧮 Calculadora</h1>
+        <!-- Título principal -->
 
-            <button onclick="adicionarValor('7')">7</button>
-            <button onclick="adicionarValor('8')">8</button>
-            <button onclick="adicionarValor('9')">9</button>
-            <button onclick="adicionarValor('-')" class="btn-operador">-</button>
+        <div class="campo">
+            <!-- Agrupa o primeiro campo -->
 
-            <button onclick="adicionarValor('4')">4</button>
-            <button onclick="adicionarValor('5')">5</button>
-            <button onclick="adicionarValor('6')">6</button>
-            <button onclick="adicionarValor('+')" class="btn-operador">+</button>
+            <label for="num1">
+                Primeiro número
+            </label>
+            <!-- Texto associado ao input -->
 
-            <button onclick="adicionarValor('1')">1</button>
-            <button onclick="adicionarValor('2')">2</button>
-            <button onclick="adicionarValor('3')">3</button>
-            <button onclick="calcular()" class="btn-igual">=</button>
+            <input
+                type="number"
+                id="num1"
+                placeholder="Digite um número">
+            <!-- Campo para digitar o primeiro número -->
+        </div>
 
-            <button onclick="adicionarValor('0')" class="btn-zero">0</button>
-            <button onclick="adicionarValor('.')">.</button>
-            </div>
-            </div>
+        <div class="campo">
+            <!-- Agrupa o segundo campo -->
 
-            <script src="script.js"></script>
+            <label for="num2">
+                Segundo número
+            </label>
+            <!-- Texto associado ao input -->
+
+            <input
+                type="number"
+                id="num2"
+                placeholder="Digite outro número">
+            <!-- Campo para digitar o segundo número -->
+        </div>
+
+        <div class="botoes">
+            <!-- Container dos botões -->
+
+            <button onclick="calcular('+')">
+                +
+            </button>
+            <!-- Chama a função calcular passando soma -->
+
+            <button onclick="calcular('-')">
+                −
+            </button>
+            <!-- Chama a função calcular passando subtração -->
+
+            <button onclick="calcular('*')">
+                ×
+            </button>
+            <!-- Chama a função calcular passando multiplicação -->
+
+            <button onclick="calcular('/')">
+                ÷
+            </button>
+            <!-- Chama a função calcular passando divisão -->
+        </div>
+
+        <section class="resultado">
+            <!-- Área destinada ao resultado -->
+
+            <h2>Resultado</h2>
+            <!-- Título da seção -->
+
+            <p id="resultado">
+                0
+            </p>
+            <!-- Valor inicial exibido -->
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <!-- Conecta o arquivo JavaScript à página -->
+
 </body>
+<!-- Fim do conteúdo visível -->
+
 </html>
+<!-- Fim do documento HTML -->

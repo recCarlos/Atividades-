@@ -1,29 +1,67 @@
-const visor = document.getElementById('visor');
+// Função responsável por realizar os cálculos
+function calcular(operacao) {
 
-// Adiciona os números e operadores no visor
-function adicionarValor(valor) {
-    visor.value += valor;
-}
+    // Obtém o valor digitado no primeiro campo
+    const n1 = Number(document.getElementById("num1").value);
 
-// Limpa tudo o que está no visor
-function limparVisor() {
-    visor.value = '';
-}
+    // Obtém o valor digitado no segundo campo
+    const n2 = Number(document.getElementById("num2").value);
 
-// Apaga apenas o último caractere digitado
-function apagarUltimo() {
-    visor.value = visor.value.slice(0, -1);
-}
+    // Verifica se os valores informados são números válidos
+    if (isNaN(n1) || isNaN(n2)) {
 
-// Faz a mágica da matemática acontecer usando a função eval()
-function calcular() {
-    try {
-        // eval calcula a string que está dentro do visor (ex: "2+5*3")
-        if (visor.value !== '') {
-            visor.value = eval(visor.value);
-        }
-    } catch (error) {
-        // Se o usuário digitar algo inválido (ex: "++5") mostra erro
-        visor.value = 'Erro';
+        // Exibe uma mensagem de erro
+        document.getElementById("resultado").textContent =
+            "Digite números válidos.";
+
+        // Encerra a execução da função
+        return;
     }
+
+    // Variável que armazenará o resultado da operação
+    let resultado;
+
+    // Escolhe qual operação será executada
+    switch (operacao) {
+
+        // Caso a operação seja soma
+        case "+":
+            resultado = n1 + n2;
+            break;
+
+        // Caso a operação seja subtração
+        case "-":
+            resultado = n1 - n2;
+            break;
+
+        // Caso a operação seja multiplicação
+        case "*":
+            resultado = n1 * n2;
+            break;
+
+        // Caso a operação seja divisão
+        case "/":
+
+            // Verifica se o divisor é zero
+            if (n2 === 0) {
+
+                // Exibe mensagem de erro
+                resultado = "Erro: divisão por zero";
+
+            } else {
+
+                // Realiza a divisão
+                resultado = n1 / n2;
+            }
+
+            break;
+
+        // Caso seja informada uma operação inválida
+        default:
+            resultado = "Operação inválida";
+    }
+
+    // Exibe o resultado na página
+    document.getElementById("resultado").textContent =
+        `Resultado: ${resultado}`;
 }

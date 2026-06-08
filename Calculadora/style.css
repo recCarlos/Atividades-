@@ -1,68 +1,99 @@
+/* Seleciona todos os elementos da página */
+* {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamentos internos padrão */
+    box-sizing: border-box; /* Faz largura e altura incluírem bordas e padding */
+}
 
+/* Estiliza o corpo da página */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* Fundo com um gradiente moderno e suave */
-    background: linear-gradient(135deg, #0f172a, #1e1b4b); 
-    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif; /* Define a fonte principal */
+    background: linear-gradient(135deg, #4f46e5, #7c3aed); /* Cria um fundo em degradê */
+    min-height: 100vh; /* Altura mínima igual à altura da tela */
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    color: #333; /* Define a cor padrão do texto */
 }
 
+/* Estiliza a caixa da calculadora */
 .calculadora {
-    /* Efeito Glassmorphism (vidro fosco) */
-    background: rgba(30, 41, 59, 0.7); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    
-    padding: 24px;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    width: 340px;
+    background: #fff; /* Fundo branco */
+    width: 350px; /* Largura fixa */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 20px; /* Arredonda os cantos */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
 }
 
-#visor {
-    width: 100%;
-    height: 75px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    color: #f8fafc;
-    font-size: 2.2rem;
-    font-weight: 500;
-    text-align: right;
-    padding: 0 20px;
-    margin-bottom: 24px;
-    outline: none;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+/* Estiliza o título da calculadora */
+.calculadora h1 {
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: #4f46e5; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
 }
 
+/* Estiliza todos os campos de entrada */
+input {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 12px; /* Espaçamento interno */
+    margin: 8px 0; /* Espaço acima e abaixo */
+    border: 2px solid #ddd; /* Borda cinza clara */
+    border-radius: 10px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: 0.3s; /* Anima mudanças suavemente */
+}
+
+/* Quando o usuário clica no campo */
+input:focus {
+    border-color: #4f46e5; /* Muda a cor da borda */
+    outline: none; /* Remove contorno padrão do navegador */
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.3); /* Adiciona brilho */
+}
+
+/* Container dos botões */
 .botoes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    display: grid; /* Usa CSS Grid */
+    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas iguais */
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 15px; /* Espaço acima */
 }
 
+/* Estiliza todos os botões */
 button {
-    height: 62px;
-    border: none;
-    border-radius: 16px;
-    background: #334155;
-    color: #f8fafc;
-    font-size: 1.4rem;
-    font-weight: 500;
-    cursor: pointer;
-    /* Transição suave para todas as animações */
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px; /* Espaçamento interno */
+    border: none; /* Remove borda */
+    border-radius: 10px; /* Arredonda os cantos */
+    background: #4f46e5; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    cursor: pointer; /* Mostra mãozinha ao passar o mouse */
+    transition: 0.3s; /* Anima mudanças */
 }
 
-/* --- Efeitos de Interação --- */
-
-/* Quando o mouse passa por cima (Hover) */
+/* Quando o mouse passa sobre o botão */
 button:hover {
-    background: #475569;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}   
+    background: #4338ca; /* Escurece a cor */
+    transform: translateY(-2px); /* Move o botão para cima */
+}
+
+/* Quando o botão é pressionado */
+button:active {
+    transform: scale(0.98); /* Diminui levemente o tamanho */
+}
+
+/* Caixa que contém o resultado */
+.resultado {
+    margin-top: 20px; /* Espaço acima */
+    padding: 15px; /* Espaçamento interno */
+    background: #f4f4f4; /* Fundo cinza claro */
+    border-radius: 10px; /* Cantos arredondados */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Texto do resultado */
+#resultado {
+    font-size: 22px; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    color: #4f46e5; /* Cor do texto */
+}
