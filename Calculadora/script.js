@@ -1,67 +1,59 @@
-// Função responsável por realizar os cálculos
-function calcular(operacao) {
+// Seleciona os elementos do HTML
+const num1 = document.getElementById("num1");
+const num2 = document.getElementById("num2");
+const resultado = document.getElementById("resultado");
 
-    // Obtém o valor digitado no primeiro campo
-    const n1 = Number(document.getElementById("num1").value);
+// Botões
+const somar = document.getElementById("somar");
+const subtrair = document.getElementById("subtrair");
+const multiplicar = document.getElementById("multiplicar");
+const dividir = document.getElementById("dividir");
 
-    // Obtém o valor digitado no segundo campo
-    const n2 = Number(document.getElementById("num2").value);
+// Soma
+somar.addEventListener("click", function () {
 
-    // Verifica se os valores informados são números válidos
-    if (isNaN(n1) || isNaN(n2)) {
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
 
-        // Exibe uma mensagem de erro
-        document.getElementById("resultado").textContent =
-            "Digite números válidos.";
+    mostrarResultado(n1 + n2);
+});
 
-        // Encerra a execução da função
-        return;
+// Subtração
+subtrair.addEventListener("click", function () {
+
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+
+    mostrarResultado(n1 - n2);
+});
+
+// Multiplicação
+multiplicar.addEventListener("click", function () {
+
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+
+    mostrarResultado(n1 * n2);
+});
+
+// Divisão
+dividir.addEventListener("click", function () {
+
+    let n1 = Number(num1.value);
+    let n2 = Number(num2.value);
+
+    if (n2 === 0) {
+        resultado.textContent = "Erro";
+    } else {
+        mostrarResultado(n1 / n2);
     }
-
-    // Variável que armazenará o resultado da operação
-    let resultado;
-
-    // Escolhe qual operação será executada
-    switch (operacao) {
-
-        // Caso a operação seja soma
-        case "+":
-            resultado = n1 + n2;
-            break;
-
-        // Caso a operação seja subtração
-        case "-":
-            resultado = n1 - n2;
-            break;
-
-        // Caso a operação seja multiplicação
-        case "*":
-            resultado = n1 * n2;
-            break;
-
-        // Caso a operação seja divisão
-        case "/":
-
-            // Verifica se o divisor é zero
-            if (n2 === 0) {
-
-                // Exibe mensagem de erro
-                resultado = "Erro: divisão por zero";
-
-            } else {
-
-                // Realiza a divisão
-                resultado = n1 / n2;
-            }
-
-            break;
-
-        // Caso seja informada uma operação inválida
-        default:
-            resultado = "Operação inválida";
+});
+function mostrarResultado(valor){
+    resultado.textContent = valor;
+//se o resultaado for negativo
+    if (valor < 0) {
+        resultado.style.color = "red";
+    } else {
+        resultado.style.color = "blue";
     }
-
-    // Exibe o resultado na página
-    document.getElementById("resultado").textContent =
-        `Resultado: ${resultado}`;
 }

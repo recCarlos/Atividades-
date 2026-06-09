@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Lista de Produtos";
+    
+    // 1. Recuperando as listas da ViewBag e fazendo o cast correto
+    var nomes = ViewBag.NomesProdutos as List<string>;
+    var precos = ViewBag.PrecosProdutos as List<double>;
+}
+
+<h2>Lista de Produtos</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < nomes.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                
+                <td>@nomes[i]</td>
+                
+                <td class="@(precos[i] < 100 ? "text-success fw-bold" : "")">
+                    R$ @precos[i].ToString("F2")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="alert alert-info">
+    <strong>Total:</strong> @nomes.Count produtos
+</div>
